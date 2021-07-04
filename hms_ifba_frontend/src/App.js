@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import ServicesList from './components/ServicesList';
 import ListLoad from './components/ListLoad';
-import LoginTab from './components/Login';
+//import LoginTab from './components/Login';
 import MenuBar from './components/MenuBar';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { Container } from '@material-ui/core';
 
 const theme = createMuiTheme({
   palette: {
@@ -26,7 +27,7 @@ function App() {
   const ListLoading = ListLoad(ServicesList);
   const [appState, setAppState] = useState({
     loading: false,
-    repos: null,
+    services: null,
   });
 
   useEffect(() => {
@@ -35,22 +36,21 @@ function App() {
     fetch(apiUrl)
       .then((res) => res.json())
       .then((repos) => {
-        setAppState({ loading: false, repos: repos });
+        setAppState({ loading: false, services: repos });
       });
   }, [setAppState]);
   return (
     <ThemeProvider theme={theme}>
-      <div className='App'>
-        <div className='container'>
-          <div className='menu'>
-          <MenuBar></MenuBar>
-          </div>
-          <div className='repo-container'>
-            <LoginTab></LoginTab>
-            <ListLoading isLoading={appState.loading} repos={appState.repos} />
+      <div className='menu'>
+        <MenuBar/>
+      </div>
+      <Container>
+        <div className='App'>
+          <div className='repo-container'>            
+            <ListLoading isLoading={appState.loading} services={appState.services} />
           </div>
         </div>
-      </div>
+        </Container>
     </ThemeProvider>
   );
 }

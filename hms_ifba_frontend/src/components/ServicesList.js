@@ -29,8 +29,8 @@ const StyledTableRow = withStyles((theme) => ({
 const List = (props) => {
   const classes = useStyles();
   
-  const { repos } = props;
-  if (!repos || repos.length === 0) return <p>Não temos Serviços disponiveis no momento</p>;
+  const { services } = props;
+  if (!services || services.length === 0) return <p>Não temos Serviços disponiveis no momento</p>;
     
   return (
     <Fragment>
@@ -44,12 +44,12 @@ const List = (props) => {
               </TableRow>
             </TableHead>  
             <TableBody>      
-              {repos.map((repo) => {
+              {services.map((service) => {
                   return (
-                  <StyledTableRow   key={repo.id}>
-                      <StyledTableCell   align="center">{repo.tipo}</StyledTableCell >
-                      <StyledTableCell   align="center">{repo.epoca_ano}</StyledTableCell >
-                      <StyledTableCell   align="center">{repo.preco}</StyledTableCell >
+                  <StyledTableRow key={service.id}>
+                      <StyledTableCell align="center">{service.tipo}</StyledTableCell >
+                      <StyledTableCell align="center">{service.epoca_ano}</StyledTableCell >
+                      <StyledTableCell align="center">{service.preco}</StyledTableCell >
                   </StyledTableRow  >
                   );
               })}      
