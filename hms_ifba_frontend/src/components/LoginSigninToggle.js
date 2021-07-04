@@ -9,7 +9,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import LoginTab from './Login';
-import SignTab from './Signin'
+import SignTab from './SignUp'
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -21,13 +21,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LoginSignin() {
+export default function LoginSignUp() {
   const classes = useStyles();
   const [open, setOpen ] = React.useState(true);
-  const [openSingin, setOpenSingin] = React.useState(false);
+  const [openSingup, setOpenSingup] = React.useState(false);
   const handleClick = () => {
     setOpen(!open);
-    setOpenSingin(open);
+    setOpenSingup(open);
   }; 
 
   return (
@@ -55,9 +55,9 @@ export default function LoginSignin() {
           <InboxIcon />
         </ListItemIcon>
         <ListItemText primary="Sing In" />
-        {openSingin ? <ExpandLess /> : <ExpandMore />}
+        {openSingup ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-      <Collapse in={openSingin} timeout="auto" unmountOnExit>
+      <Collapse in={openSingup} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItem button className={classes.nested}>
             <SignTab/>

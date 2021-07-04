@@ -11,7 +11,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import LoginSignin from './LoginSigninToggle';
+import LoginSignUp from './LoginSigninToggle';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -85,7 +85,7 @@ export default function MenuBar() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem><LoginSignin/></MenuItem>
+                <MenuItem><LoginSignUp/></MenuItem>
                
               </Menu>
             </div>
@@ -117,7 +117,7 @@ export default function MenuBar() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem><LoginSignin/></MenuItem>
+                <MenuItem><LoginSignUp/></MenuItem>
                
               </Menu>
             </div>
