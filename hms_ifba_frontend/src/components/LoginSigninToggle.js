@@ -5,11 +5,12 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import LoginTab from './Login';
 import SignTab from './SignUp'
+import PersonIcon from '@material-ui/icons/Person';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -38,7 +39,7 @@ export default function LoginSignUp() {
     >
      <ListItem button onClick={handleClick}>
         <ListItemIcon>
-          <InboxIcon />
+          <PersonIcon/>
         </ListItemIcon>
         <ListItemText primary="Login" />
         {open ? <ExpandLess /> : <ExpandMore />}
@@ -52,9 +53,9 @@ export default function LoginSignUp() {
       </Collapse>
       <ListItem button onClick={handleClick}>
         <ListItemIcon>
-          <InboxIcon />
+          <PersonAddIcon/>
         </ListItemIcon>
-        <ListItemText primary="Sing In" />
+        <ListItemText primary="Sing Up" />
         {openSingup ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={openSingup} timeout="auto" unmountOnExit>

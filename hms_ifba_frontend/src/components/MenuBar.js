@@ -117,8 +117,9 @@ export default function MenuBar() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem><LoginSignUp/></MenuItem>
-               
+                <MenuItem>
+                  <LoginSignUp/>
+                </MenuItem>               
               </Menu>
             </div>
           )}
