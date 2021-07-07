@@ -10,5 +10,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-app.cors(cors());
-app.listen(process.env.PORT || 3000);
+App.cors(cors());
+App.listen(process.env.PORT || 3000);
