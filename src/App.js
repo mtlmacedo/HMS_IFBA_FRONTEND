@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import './App.css';
 
-import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 
 import Header from './layout/Header';

@@ -6,14 +6,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../actions/auth';
 
-const styles = theme => ({
-    margin: {
-        margin: theme.spacing.unit * 2,
-    },
-    padding: {
-        padding: theme.spacing.unit,
-    }
-});
+// const styles = theme => ({
+//     margin: {
+//         margin: theme.spacing.unit * 2,
+//     },
+//     padding: {
+//         padding: theme.spacing.unit,
+//     }
+// });
 export class LoginTab extends Component {
     state = {
       username: '',
@@ -36,10 +36,10 @@ export class LoginTab extends Component {
         if (this.props.isAuthenticated) {
             return <Redirect to="/" />;
           }
-        const { classes } = this.props;
+        // const { classes } = this.props;
         const { username, password } = this.state;
         return (
-            <Paper elevation={4} >    
+            <Paper elevation={4} style={{padding: 20}}>    
                 <div alignItems="flex-end">            
                     <form onSubmit={this.handleSubmit}>
                         <Grid container spacing={1} alignItems="flex-end">
