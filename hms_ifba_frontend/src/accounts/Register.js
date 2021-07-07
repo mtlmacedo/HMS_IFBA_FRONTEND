@@ -1,47 +1,54 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Paper, withStyles, Grid, TextField, Button } from '@material-ui/core';
 import { Email, Face, Fingerprint } from '@material-ui/icons'
-const styles = theme => ({
-    margin: {
-        margin: theme.spacing.unit * 2,
-    },
-    padding: {
-        padding: theme.spacing.unit
-    }
-});
 
-const singup = (username, password, password2, email) => (dispatch) => {
-    const requestInfo = {
-        method: 'POST',
-        body: JSON.stringify({username: username, password: password, password2: password2, email: email}),
-        headers: {
-            'Content-type': 'application/json',
-        }
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { register } from '../actions/auth';
+import { createMessage } from '../actions/messages';
+
+
+export class Register extends Component {
+    state = {
+      username: '',
+      email: '',
+      password: '',
+      password2: '',
     };
   
-    fetch("http://127.0.0.1:8000/register/", requestInfo)
-    .then(function(res){ return res.json(); })
-};   
-
-
-class SignTab extends React.Component {
-    state = {
-        username: '',
-        password: '',
-        password2: '',
-        email: '',
+    static propTypes = {
+      register: PropTypes.func.isRequired,
+      isAuthenticated: PropTypes.bool,
     };
-    onSubmit = (e) => {
-        e.preventDefault();
-        this.props.login(this.state.username, this.state.password, this.state.password2, this.state.email);
+  
+    handleSubmit = (e) => {
+      e.preventDefault();
+      const { username, email, password, password2 } = this.state;
+      if (password !== password2) {
+        this.props.createMessage({ passwordNotMatch: 'Passwords do not match' });
+      } else {
+        const newUser = {
+          username,
+          password,
+          password2,
+          email,
+        };
+        this.props.register(newUser);
+      }
     };
+  
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+  
     render() {
-        const { classes } = this.props;
-        const { username, password, password2, email } = this.state;
+      if (this.props.isAuthenticated) {
+        
+      }
+      const { username, email, password, password2 } = this.state;
         return (
-            <Paper className={classes.padding}>
-                <div className={classes.margin}>
+            <Paper>
+                <div>
+                <form onSubmit={this.handleSubmit}>
                     <Grid container spacing={8} alignItems="flex-end">
                         <Grid item>
                             <Face />
@@ -63,7 +70,7 @@ class SignTab extends React.Component {
                             <Fingerprint />
                         </Grid>
                         <Grid item md={true} sm={true} xs={true}>
-                        <TextField value={password2} name="password2" label="Password2" type="password2" onChange={this.onChange} fullWidth required />
+                        <TextField value={password2} name="password2" label="Password2" type="password" onChange={this.onChange} fullWidth required />
                         </Grid>
                     </Grid>
                     <Grid container spacing={8} alignItems="flex-end">
@@ -75,12 +82,18 @@ class SignTab extends React.Component {
                         </Grid>
                     </Grid>
                     <Grid container justify="center" style={{ marginTop: '10px' }}>
-                        <Button variant="outlined" color="primary" onClick={singup(username, password, password2, email)} style={{ textTransform: "none" }}>Sign In</Button>
+                        <Button variant="outlined" color="primary" type="submit" value="Submit" style={{ textTransform: "none" }}>Sign In</Button>
                     </Grid>
+                    </form>
                 </div>
             </Paper>
         );
     }
 }
 
-export default withStyles(styles)(SignTab);
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
+  });
+  
+export default connect(mapStateToProps, { register, createMessage })(Register);
+  
