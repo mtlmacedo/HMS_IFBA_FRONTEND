@@ -1,57 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import './App.css';
-import ServicesList from './components/ServicesList';
-import ListLoad from './components/ListLoad';
-//import LoginTab from './components/Login';
-import MenuBar from './components/MenuBar';
+
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: '#6d1b7b',
-      main: '#9c27b0',
-      dark: '#af52bf',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
-    },
-  },
-});
-function App() {
-  const ListLoading = ListLoad(ServicesList);
-  const [appState, setAppState] = useState({
-    loading: false,
-    services: null,
-  });
+import Header from './layout/Header';
+import Dashboard from './reservas/Dashboard';
+import Login from './accounts/Login';
+import Register from './accounts/Register';
+import PrivateRoute from './components/common/PrivateRoute';
 
-  useEffect(() => {
-    setAppState({ loading: true });
-    const apiUrl = `http://127.0.0.1:8000/servicos/`;
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((repos) => {
-        setAppState({ loading: false, services: repos });
-      });
-  }, [setAppState]);
+import { Provider } from 'react-redux';
+import store from './store';
+
+function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div className='menu'>
-        <MenuBar/>
-      </div>
-      <Container>
-        <div className='App'>
-          <div className='repo-container'>            
-            <ListLoading isLoading={appState.loading} services={appState.services} />
-          </div>
-        </div>
-        </Container>
-    </ThemeProvider>
+    <Provider store={store}>
+      <Router>
+        <Fragment>     
+        <body>      
+          <Header/>            
+            <Container>  
+            <div className="App">            
+                <Switch>
+                  <PrivateRoute exact path="/" component={Dashboard} />
+                  <Route exact path="/register" component={Register} />
+                  <Route exact path="/login" component={Login} />
+                </Switch>                
+                </div>
+            </Container>  
+            </body>        
+        </Fragment>
+      </Router>
+    </Provider>
   );
 }
 export default App;
