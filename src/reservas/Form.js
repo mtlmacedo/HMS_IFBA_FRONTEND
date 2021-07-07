@@ -40,47 +40,51 @@ export class Form extends Component {
     return (
       <Paper>
         <div>
-        <form onSubmit={this.handleSubmit}>
-            <Grid container spacing={8} alignItems="flex-end">            
+        <form onSubmit={this.handleSubmit} className="form__container">
+            <Grid container spacing={8} alignItems="flex-end" className="grid__content">            
                 <Grid item md={true} sm={true} xs={true}>
-                <TextField type="datetime-local" 
-                           value={dataEntrada}
-                           name="dataEntrada"
-                           label="Data Entrada"
-                           onChange={this.onChange}
-                           InputLabelProps={{
-                            shrink: true,
-                          }} />
+                  <TextField type="datetime-local" 
+                    value={dataEntrada}
+                    name="dataEntrada"
+                    label="Data Entrada"
+                    variant="outlined"
+                    onChange={this.onChange}
+                    // InputLabelProps={{
+                    //   shrink: false,
+                    // }} 
+                  />
                 </Grid>
             </Grid>
-            <Grid container spacing={8} alignItems="flex-end">
+            <Grid container spacing={8} alignItems="flex-end" className="grid__content">
                 <Grid item md={true} sm={true} xs={true}>
                 <TextField type="datetime-local" 
                            value={dataSaida}
                            name="dataSaida"
-                           label="Data Saida"
+                           label="Data Saída"
+                           variant="outlined"
                            onChange={this.onChange}
-                           InputLabelProps={{
-                            shrink: true,
-                          }} />
+                          //  InputLabelProps={{
+                          //     shrink: true,
+                          //   }} 
+                          />
                 </Grid>            
             </Grid>
-            <Grid container spacing={8} alignItems="flex-end">
+            <Grid container spacing={8} alignItems="flex-end" className="grid__content">
                 <Grid item md={true} sm={true} xs={true}>
-                <TextField value={quarto} name="quarto" label="quarto" onChange={this.onChange}  />
+                <TextField variant="outlined" value={quarto} name="quarto" label="Quarto" onChange={this.onChange}  />
                 </Grid>
             </Grid>
-            <Grid container spacing={8} alignItems="flex-end">
+            <Grid container spacing={8} alignItems="flex-end" className="grid__content">
                 <Grid item md={true} sm={true} xs={true}>
-                <TextField value={qtd_pessoas} name="qtd_pessoas" label="qtd_pessoas" onChange={this.onChange}  />
+                <TextField variant="outlined" value={qtd_pessoas} name="qtd_pessoas" label="Quantidade" onChange={this.onChange}  />
                 </Grid>
             </Grid>
-            <Grid container spacing={8} alignItems="flex-end">
+            <Grid container spacing={8} alignItems="flex-end" className="grid__content">
                 <Grid item md={true} sm={true} xs={true}>
-                <TextField value={servico} name="servico" label="servico" onChange={this.onChange} />
+                <TextField variant="outlined" value={servico} name="servico" label="Serviço" onChange={this.onChange} />
                 </Grid>
             </Grid>
-            <Grid container justify="center" style={{ marginTop: '10px' }}>
+            <Grid container justify="center" className="grid__content" >
                 <Button variant="outlined" color="primary" type="submit" value="Submit" style={{ textTransform: "none" }}>Reservar</Button>
             </Grid>
             </form>

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import { Paper, withStyles, Grid, TextField, Button } from '@material-ui/core';
+import { Paper, Grid, TextField, Button } from '@material-ui/core';
 import { Email, Face, Fingerprint } from '@material-ui/icons'
 
-import { Link, Redirect } from 'react-router-dom';
+// import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { register } from '../actions/auth';

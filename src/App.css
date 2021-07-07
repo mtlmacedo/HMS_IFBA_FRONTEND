@@ -43,3 +43,24 @@
     transform: rotate(360deg);
   }
 }
+
+.btn__header {
+  position: relative;
+  right: 0;
+}
+
+.navbar__ {
+
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.form__container {
+  display: flex;
+  flex-direction: row;
+  padding: 50px;
+}
+
+.form__container .grid__content {
+  margin-left: 30px;
+}
