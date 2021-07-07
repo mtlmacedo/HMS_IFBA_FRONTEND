@@ -18,7 +18,7 @@ export const getReservas = () => (dispatch, getState) => {
 
 export const deleteReservas = (id) => (dispatch, getState) => {
   axios
-    .delete(`https://hms-ifba.herokuapp.com/reservas/?id=${id}`, tokenConfig(getState))
+    .delete(`https://hms-ifba.herokuapp.com/reservas/?id=${id}/`, tokenConfig(getState))
     .then((res) => {
       dispatch(createMessage({ deleteReservas: 'Reserva Deletada' }));
       dispatch({
