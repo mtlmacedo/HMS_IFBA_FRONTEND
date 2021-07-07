@@ -9,3 +9,6 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+app.cors(cors());
+app.listen(process.env.PORT || 3000);
