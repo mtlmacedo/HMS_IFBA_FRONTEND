@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Paper, withStyles, Grid, TextField, Button, InputLabel  } from '@material-ui/core';
+import { Paper, Grid, TextField, Button  } from '@material-ui/core';
 import { Face, Fingerprint } from '@material-ui/icons'
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -11,7 +11,7 @@ const styles = theme => ({
         margin: theme.spacing.unit * 2,
     },
     padding: {
-        padding: theme.spacing.unit
+        padding: theme.spacing.unit,
     }
 });
 export class LoginTab extends Component {
@@ -63,7 +63,7 @@ export class LoginTab extends Component {
                         </Grid>
                         <Grid container spacing={1} alignItems="flex-end">
                             <Grid item>
-                                Ainda não possui uma conta ? <Link to="/register">Registrar-se</Link>
+                                Ainda não possui uma conta? <Link to="/register">Registrar-se</Link>
                             </Grid>
                         </Grid>
                     </form> 

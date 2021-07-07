@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 
 import { Paper, Grid, TextField, Button } from '@material-ui/core';
-import { Email, Face, Fingerprint } from '@material-ui/icons'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addReservas } from '../actions/reservas';
-// import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-
-// import DateFnsUtils from '@date-io/date-fns';
-
-// import DatePicker from "react-datepicker";
-
-// import "react-datepicker/dist/react-datepicker.css";
 
 export class Form extends Component {
   state = {
